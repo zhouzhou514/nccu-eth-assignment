@@ -1,0 +1,9 @@
+		Assignment 1 answers 楊銘洲 104703024
+Q1：hash 函數指的是一類能根據輸入數據輸出特徵值（值域通常小於定義域）的函數，對同一輸入值一定會產生同樣的輸出值，對於不同的輸出值，輸出值相同的機率較小。				而cryptographic hash function 具有一些額外特點：無法靠輸出反推出輸入的數據，並且不同輸入產生相同輸出的機率極小，這樣的特性使其具有很好的安全特性。
+
+Q2：/code/ans-a.js
+
+Q3：/code/ans-b.js
+
+Q4：作為存儲解密私鑰的文件，keystore文件不能以明文存儲私鑰，也不能明文存儲獲得私鑰的方法（passphrase），因此，該文件被設計成輸入passphrase後經過一連串處理才能輸出decryption private key。
+如果我們有一串decryption private key和passphrase，先利用隨機生成的參數（n，r，p，salt）利用AES算法加密passphrase得到decryption key，decryption key 和decryption private key輸入AES-128-ctr得到ciphertext儲存，ciphertext會再和decryption key進行結合，輸入SHA函式後再hash產生mac用於驗證，至此所有key store文件的內容都被產生出來了。
